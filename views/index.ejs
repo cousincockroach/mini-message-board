@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <header>
+    <h1><%= title %></h1>
+    <p>Recent posts from the community</p>
+  </header>
+  
+  <div class="messages-container">
+    <% messages.forEach(function(message) { %>
+      <div class="message-card">
+        <div>
+          <div class="message-user">@<%= message.user %></div>
+          <p class="message-text"><%= message.text %></p>
+        </div>
+        <div class="message-date"><%= new Date(message.added).toLocaleDateString() %></div>
+      </div>
+    <% }) %>
+  </div>
+
+  <div class="form-card">
+    <h2>Post a New Message</h2>
+    <form method="POST" action="/new">
+      <div class="form-group">
+        <label for="user">Author Name:</label>
+        <input type="text" id="user" name="messageUser" placeholder="e.g. Amando" required>
+      </div>
+      <div class="form-group">
+        <label for="text">Message Text:</label>
+        <textarea id="text" name="messageText" rows="3" placeholder="What's on your mind?" required></textarea>
+      </div>
+      <button type="submit">Submit Message</button>
+    </form>
+  </div>
+
+</body>
+</html>
