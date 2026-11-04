@@ -13,16 +13,16 @@
   </header>
   
   <div class="messages-container">
-    <% messages.forEach(function(message) { %>
-      <div class="message-card">
-        <div>
-          <div class="message-user">@<%= message.user %></div>
-          <p class="message-text"><%= message.text %></p>
-        </div>
-        <div class="message-date"><%= new Date(message.added).toLocaleDateString() %></div>
-      </div>
-    <% }) %>
-  </div>
+  <h2>Community Feed</h2>
+  
+  <% messages.forEach(function(message) { %>
+    <div class="message-item">
+      <span class="message-user">@<%= message.user %></span>: 
+      <span class="message-text"><%= message.text %></span>
+      <span class="message-date"><%= new Date(message.added).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) %></span>
+    </div>
+  <% }) %>
+</div>
 
   <div class="form-card">
     <h2>Post a New Message</h2>
